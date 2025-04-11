@@ -15,18 +15,13 @@
 
         <title>Title</title>
         <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+
+
     </head>
     <body>
-        <!-- HTML -->
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- <script src="script.js"></script> -->
-        <script>
-            // JS
-
-
-        </script>
 
          <a-scene>
             <a-box position="-5 0 -2" height="5" material= "src:mctree.png;repeat:1 2"></a-box>
@@ -38,26 +33,26 @@
             <a-box position="5 3 -3" width="3" height="1.5" material= "src:mcleaf.png;repeat: 10 10"></a-box>
             <a-box position="5 3 -1" width="3" height="1.5" material= "src:mcleaf.png;repeat: 10 10"></a-box>
             <a-plane material= "src:images.png;repeat: 40 40" height="100" width="100" rotation="-90 0 0" position="0 -2.42 0"></a-plane>
-            <a-scene keyboard-shortcuts="enterVR: false; exitVR: false;"></a-scene>
             <a-assets>
                 <img id="sky" src="sky2.png">
 
               </a-assets>
               <a-sky src="#sky"></a-sky>
 
-              <div class="rs-base"><div class="rs-container" style="height: auto;"><h1>Framerate</h1><div class="rs-group"><div class="rs-counter-base"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">raf</span><div class="rs-counter-value">81.3</div></div><div class="rs-counter-base alarm"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">fps</span><div class="rs-counter-value">11.69</div></div></div><h1>Three.js - Memory</h1><div class="rs-group"><div class="rs-counter-base"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">Geometries</span><div class="rs-counter-value">1</div></div><div class="rs-counter-base"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">Programs</span><div class="rs-counter-value">1</div></div><div class="rs-counter-base"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">Textures</span><div class="rs-counter-value">0</div></div></div><h1>Three.js - Render</h1><div class="rs-group"><div class="rs-counter-base"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">Calls</span><div class="rs-counter-value">3984</div></div><div class="rs-counter-base alarm"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">Triangles</span><div class="rs-counter-value">47808</div></div><div class="rs-counter-base"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">Points</span><div class="rs-counter-value">0</div></div></div><h1>A-Frame</h1><div class="rs-group"><div class="rs-counter-base"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">Entities</span><div class="rs-counter-value">4012</div></div><div class="rs-counter-base"><canvas width="200" height="10" class="rs-canvas" style="width: 200px; height: 10px;"></canvas><span class="rs-counter-id">Load Time</span><div class="rs-counter-value">3861</div></div></div></div></div>
+              <div>FPS: <span id="fps"></span></div>
+              <script>
+              let then = Date.now() / 1000; // get time in seconds
+              function render() {
+                  let now = Date.now() / 1000; // get time in seconds
+                  let elapsedTime = now - then;
+                  then = now;
+                  let fps = 1 / elapsedTime;
+                  document.getElementById('fps').innerText = fps.toFixed(2);
+                  requestAnimationFrame(render);
+              }
+              render();
+              </script>
 
-              <!--Snowman-->
-                <!--Body-->
-            <a-sphere position="0 0.5 0" radius="1.15" color="#white"></a-sphere>
-            <a-sphere position="0 2.25 0" radius="0.95" color="#white"></a-sphere>
-            <a-sphere position="0 3.5 0" radius="0.75" color="#white"></a-sphere>
-                <!--Eyes-->
-            <a-sphere position="-0.3 3.7 0.8" radius="0.15" color="black"></a-sphere>
-            <a-sphere position="0.3 3.7 0.8" radius="0.15" color="black"></a-sphere>
-            <!--Nose-->
-            <a-cone position="0.025 3.5 1" color="tomato" radius-bottom="0.1" radius-top="0.01" rotation="90"></a-cone>
-          </a-scene>
 
     </body>
 </html>
